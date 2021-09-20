@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 
 class Url:
-    def __init__(self, scheme="", authority="", path="", query={}, fragment=[]):
-        self.scheme = scheme
-        self.authority = authority
+    def __init__(self, input_scheme="", input_authority="", path="", query={}, fragment=[]):
+        self.scheme = input_scheme
+        self.authority = input_authority
         self.path = path
         self.query = query
         self.fragment = fragment
@@ -22,24 +22,20 @@ class Url:
 
 
 class HttpsUrl(Url):
-    def __init__(self, scheme, authority, path, query, fragment):
-        super().__init__(scheme, authority, path, query, fragment)
-        self.scheme = "https://"
+    def __init__(self, input_scheme="https://"):
+        super().__init__(input_scheme)
 
 
 class HttpUrl(Url):
-    def __init__(self, scheme, authority, path, query, fragment):
-        super().__init__(scheme, authority, path, query, fragment)
-        self.scheme = "http://"
+    def __init__(self, input_scheme="https://"):
+        super().__init__(input_scheme)
 
 
 class GoogleUrl(HttpsUrl):
-    def __init__(self, scheme, authority, path, query, fragment):
-        super().__init__(scheme, authority, path, query, fragment)
-        self.authority = "google.com/"
+    def __init__(self, input_authority="google.com/"):
+        super().__init__(input_authority)
 
 
 class WikiUrl(HttpsUrl):
-    def __init__(self, scheme, authority, path, query, fragment):
-        super().__init__(scheme, authority, path, query, fragment)
-        self.authority = "wikipedia.org/"
+    def __init__(self, input_authority="wikipedia.org"):
+        super().__init__(input_authority)
