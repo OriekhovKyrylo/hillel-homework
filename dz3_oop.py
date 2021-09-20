@@ -1,12 +1,12 @@
 #!/usr/bin/python3
 
 class Url:
-    def __init__(self, scheme, authority, path, query, fragment):
-        self.scheme = ""
-        self.authority = ""
-        self.path = ""
-        self.query = []
-        self.fragment = []
+    def __init__(self, scheme="", authority="", path="", query={}, fragment=[]):
+        self.scheme = scheme
+        self.authority = authority
+        self.path = path
+        self.query = query
+        self.fragment = fragment
 
     def __eq__(self, other):
         if (self.scheme == other.scheme and
@@ -18,28 +18,28 @@ class Url:
         return False
 
     def __str__(self):
-        return f'{self.scheme} ://{self.authority} /{self.path} ?{self.query}{self.fragment}'
+        return f'{self.scheme} {self.authority} {self.path} {self.query}{self.fragment}'
 
 
 class HttpsUrl(Url):
     def __init__(self, scheme, authority, path, query, fragment):
         super().__init__(scheme, authority, path, query, fragment)
-        self.scheme = "https"
+        self.scheme = "https://"
 
 
 class HttpUrl(Url):
     def __init__(self, scheme, authority, path, query, fragment):
         super().__init__(scheme, authority, path, query, fragment)
-        self.scheme = "http"
+        self.scheme = "http://"
 
 
 class GoogleUrl(HttpsUrl):
     def __init__(self, scheme, authority, path, query, fragment):
         super().__init__(scheme, authority, path, query, fragment)
-        self.authority = "google.com"
+        self.authority = "google.com/"
 
 
 class WikiUrl(HttpsUrl):
     def __init__(self, scheme, authority, path, query, fragment):
         super().__init__(scheme, authority, path, query, fragment)
-        self.authority = "wikipedia.org"
+        self.authority = "wikipedia.org/"
