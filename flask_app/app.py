@@ -4,7 +4,7 @@ import string
 from flask import *
 
 app = Flask("__name__")
-random_symbols = ["!@#$%^&*()_+"]
+random_symbols = "!@#$%^&*()_+"
 
 
 @app.route("/whoami")
@@ -31,10 +31,10 @@ def param():
         return "enter a length greater than 0"
     if digits == "1":
         if specials == "1":
-            return "".join(random.choices(string.ascii_letters + str(random_symbols) + string.digits, k=int(length)))
+            return "".join(random.choices(string.ascii_letters + random_symbols + string.digits, k=int(length)))
         return "".join(random.choices(string.ascii_letters + string.digits, k=int(length)))
     elif specials == "1":
-        return "".join(random.choices(string.ascii_letters + str(random_symbols), k=int(length)))
+        return "".join(random.choices(string.ascii_letters + random_symbols, k=int(length)))
     return "".join(random.choices(string.ascii_letters, k=int(length)))
 
 
